@@ -1,0 +1,76 @@
+html, body {
+    background: #FDE3A7;
+}
+
+/* 被用户选中高亮的部分 */
+::selection {
+    background: transparent;
+}
+
+h4.title {
+    color: #e67e22;
+    font-size: 0.7rem;
+}
+
+.card {
+    width: 10rem;
+    height: 13.8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    
+    box-shadow: inset 15rem 0 2.5rem rgba(0,0,0,.5), 1rem 0 3rem rgba(0,0,0,.5);
+    transition: 1s;
+    background: white;
+}
+
+.card:hover {
+    transform: translate(-50%, -50%) rotate(15deg) scale(1.2);
+    box-shadow: inset 1rem 0 2.5rem rgba(0,0,0,.5), 0 0.5rem 4rem rgba(0,0,0,.5);
+    cursor: pointer;
+}
+
+.card .cover {
+	transform-origin: left;
+	transition: 0.7s;
+}
+
+.card .bark {
+    position: absolute;
+    width: 16rem;
+    height: 13.8rem;
+    opacity: 0;
+    transition: 0.7s;
+    background: #e0e1dc;
+}
+
+.cover-jpg {
+    max-width: 10rem;
+
+}
+
+.card:hover .cover {
+    transform: rotateY(-120deg);
+}
+
+.card:hover .bark {
+    opacity: 1;
+    box-shadow: 15rem 10rem 5rem rgba(0, 0, 0, .4) inset;
+}
+
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    margin-top: 1rem;
+    font-size: 0.5rem;
+    text-indent: 1rem;
+    padding: 1rem;
+    transform: rotate(-10deg);
+}
+
+.details p:nth-last-of-type(1) {
+    text-align: right;
+}
+

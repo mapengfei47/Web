@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style.css">
+    <title>小傻，旅途愉快</title>
+</head>
+<body>
+    <!-- 背景音乐 -->
+    <div class="music">
+        <audio>
+                <source src="oops.mp3" type="audio/mpeg"></source>
+                不支持
+        </audio>
+    </div>
+    <div class="card">
+        <!-- 贺卡封面 -->
+        <div class="cover">
+            <div class="bark"></div>
+            <img src="cover.jpg" class="cover-jpg"/>
+        </div>
+
+        <!-- 贺卡内容 -->
+        <div class="details">
+            <h4 class="title">小傻，旅途愉快！</h4>
+            <br />
+            <p>
+                小傻，不知不觉你就毕业啦，时间过得真快。期待已久的毕业旅行，希望你能玩的开心，记得多给你男朋友发消息，在外面注意安全，多和爸爸沟通，还有就是多吃点好吃的，最后祝你旅途愉快，玩的开心。马月月在家等你！2019=爱你一直到永久。冲鸭~
+            </p>
+            <p>from 月月马</p>
+        </div>
+    </div>
+    <script>
+        window.onload = () => {
+            let audio = document.getElementsByTagName('audio')[0]; // 音频元素
+            let card = document.getElementsByClassName("card")[0]; // 贺卡
+
+            audio.volume = 0.4; // 控制音频音量
+
+            card.addEventListener('click', ()=>{
+                audio.play();
+            });
+        }
+        
+    </script>
+</body>
+</html>
