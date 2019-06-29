@@ -23,14 +23,12 @@ typeof func			//function
 2. **如果左侧的类是右侧类的实例，则返回true**
 3. **如果左操作数不是对象，则返回false，如果右操作数不是不是函数，则抛出类型错误**
 4. **instanceof操作符多用来比较自定义的对象**
-5. **instanceof操作符还可以用来比较内置的数据类型**
+5. **instanceof操作符还可以用来比较内置对象的数据类型**
 
 ~~~js
 new Number() instanceof Number			//true
 new String() instanceof String			//true
 ~~~
-
-
 
 
 
