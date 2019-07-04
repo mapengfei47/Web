@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+         #box{
+             display: flex;
+             flex-flow: row wrap;
+             background-color: silver;
+             height: 500px;
+         }
+         .item{
+             background-color:tomato;
+             /* auto,类似于 1,1,auto  即相对项目 */
+             flex: auto;
+            /* 1,类似于 1,1,0  即绝对项目 */
+             /* flex:1; */
+             margin: 10px;
+
+         }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="item">
+            千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪。
+            春眠不觉晓，处处闻啼鸟。夜来风雨声，花落知多少。
+        </div>
+        <div class="item">hello world!</div>
+    </div>
+
+</body>
+
+</html>

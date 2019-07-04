@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+         #box{
+             display: flex;
+             flex-flow: row wrap;
+             background-color: silver;
+             height: 500px;
+         }
+         .item{
+             background-color: blueviolet;
+             flex-basis: 150px;
+             height: 200px;
+             margin: 10px;
+         }
+         .item:nth-child(1){
+            background-color: tomato;
+            align-self: flex-end;
+            /* align-self: flex-start; */
+             /* align-self: center; */
+             /* align-self: stretch; */
+             /* align-self: baseline; */
+             /* align-self: auto; */
+         }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="item">hello,小明啊啊啊啊啊21323123jfkasfjlfljfk讲课费拉市第六届联发科</div>
+        <div class="item">你好你好你好啊，小红</div>
+        <div class="item">hello-world!-hwllo message</div>
+    </div>
+
+</body>
+
+</html>
