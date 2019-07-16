@@ -48,6 +48,8 @@
    Vue.use(VueRouter)
    ~~~
 
+
+
 ## 二.基本模版
 
 1. 定义组件
@@ -86,7 +88,11 @@
 </script>
 ~~~
 
+
+
 ## 三.路由传参
+
+### 3.1 URL传参
 
 - 直接通过在路径中指定参数以及参数值，在模版中使用 this.$route.query来获取参数对象
 
@@ -120,6 +126,8 @@
         })
     </script>
 ~~~
+
+### 3.2 路由配置 + URL传参
 
 - 在路由配置中指定参数列表，通过 this.$route.params对象获取参数对象
 
@@ -156,7 +164,7 @@
     </script>
 ~~~
 
-#### 区别比较
+### 3.3 区别比较
 
 1. 第一种方式是通过RUL指定参数名和参数值，在组件中使用 this.$route.query获取参数对象
 
@@ -181,4 +189,192 @@
    ~~~
 
    
+
+## 四.路由嵌套
+
+**路由嵌套：**<font color='red'>当前页面包含其它页面的跳转的时候，就需要使用路由嵌套</font>
+
+- account 组件包含两个跳转链接
+- 在account路由配置里面添加children属性，并添加包含的两路由配置
+
+~~~html
+<div id="app">
+        <h1>hello router!</h1>
+        <router-link to="/account">Account</router-link>
+        <router-view></router-view>
+    </div>
+    <template id="account">
+        <div>
+            <h1>Account</h1>
+            <router-link to="/account/login">Login</router-link>
+            <router-link to="/account/register">Register</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+    <script type="text/javascript">
+        var account = {
+            template:'#account'
+        }
+
+        var login = {
+            template:`<h3>longin success</h3>`
+        }
+
+        var register = {
+            template:`<h3>register success</h3>`
+        }
+
+        var router = new VueRouter({
+            routes:[
+                {
+                    path: '/account',
+                    component: account,
+                    children:[
+                        {path:'login',component:login},
+                        {path:'register',component:register}
+                    ]
+                }
+            ]
+        })
+
+        var vm = new Vue({
+            router
+        }).$mount("#app")
+    </script>
+~~~
+
+**<font color='red'>重点代码：</font>**
+
+~~~HTML
+<template id="account">
+        <div>
+            <h1>Account</h1>
+            <router-link to="/account/login">Login</router-link>
+            <router-link to="/account/register">Register</router-link>
+            <router-view></router-view>
+        </div>
+    </template>
+<script>
+	var router = new VueRouter({
+            routes:[
+                {
+                    path: '/account',
+                    component: account,
+                    children:[
+                        {path:'login',component:login},
+                        {path:'register',component:register}
+                    ]
+                }
+            ]
+        })
+</script>
+~~~
+
+**<font color='red'>注意：</font>**
+
+- 子路由的path前面，不要带`/`,否则永远以根路径开始请求
+
+
+
+## 五.编程式导航
+
+> 除了使用 `<router-link>` 创建 a 标签来定义导航链接，我们还可以借助 router 的实例方法，通过编写代码来实现
+
+
+
+## 六.命名视图
+
+> 简单来说就是给每一个 <router-view>设置name属性，只有该属性和路由配置里面的属性名对应的时候，才会展示该视图，通常用于同级展示多个视图
+
+- **示例：利用命名视图，实现一个header，sideBar，main的经典布局**
+
+~~~HTML
+ <style>
+     .header{
+         height: 80px;
+         background-color: pink;
+     }
+
+     .container{
+         display: flex;
+     }
+
+     .left{
+         flex: 2;
+         height: 800px;
+         background-color: tomato;
+     }
+
+     .main{
+         flex: 8;
+         height: 800px;
+         background-color: yellowgreen;
+     }
+</style>
+
+<div id="app">
+    <router-view class="header"></router-view>
+    <div class="container">
+        <router-view name='left' class="left"></router-view>
+        <router-view name='main' class="main"></router-view>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var header = {
+        template:`<div>这是头部区域</div>`
+    }
+    var sideBar = {
+        template:`<div>这是侧边栏区域</div>`
+    }
+    var main = {
+        template:`<div>这是main主区域</div>`
+    }
+
+    const router = new VueRouter({
+        routes:[
+            {
+                path: '/',
+                components: {
+                    default:header,
+                    left:sideBar,
+                    main:main
+                }
+            }
+        ]
+    });
+
+    var vue = new new Vue({
+        el:"#app",
+        router
+    })
+</script>
+~~~
+
+**<font color='red'>重点代码</font>**
+
+~~~HTML
+<router-view class="header"></router-view>
+<div class="container">
+    <router-view name='left' class="left"></router-view>
+    <router-view name='main' class="main"></router-view>
+</div>
+
+const router = new VueRouter({
+        routes:[
+            {	path: '/',components: {
+                    default:header,
+                    left:sideBar,
+                    main:main
+                }
+            }
+        ]
+});
+
+~~~
+
+**<font color='red'>注意：</font>**
+
+- 如果 `router-view` 没有设置名字，那么默认为 `default`。
+- 使用命名视图的时候，routes中的`components`记得添加`s`
 
