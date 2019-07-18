@@ -1,0 +1,20 @@
+
+li{
+    list-style: none
+}
+
+.box1{
+    width: 500px;
+    height: 500px;
+    background-image: url('../images/beautifulCar.jpg');
+    background-repeat: no-repeat;
+    float: left;
+}
+
+.box2{
+    width: 500px;
+    height: 500px;
+    background-image: url('../images/狮子云.jpg');
+    background-repeat: no-repeat;
+    float: left;
+}
