@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Document</title>
+    <style>
+        /**
+            *主轴的方向
+            *flex-direction: row | row-reverse | column | column-reverse;
+            *
+            *换行方式
+            *flex-wrap：nowrap  | wrap | wrap-reverse;
+            *
+            *flex-derection和flex-wrap的简写方式，默认是 row nowrap
+            *flex-flow：
+            *
+            *项目在主轴上的对齐方式
+            *justify-content: flex-start | flex-end | center | space-between | space-around;
+            *
+            *项目在交叉轴上的对齐方式
+            *align-items: flex-start | flex-end | center | baseline | stretch;
+            *
+            *多根轴线的对齐方式，如果只有一根轴线，该属性不起作用
+            *align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+         */
+
+         #box{
+             display: flex;
+             flex-direction: row;
+             /* flex-direction: column; */
+             /* flex-direction: row-reverse; */
+             /* flex-direction: column-reverse; */
+             background-color: silver;
+         }
+         .item{
+             width: 50px;
+             height: 50px;
+             background-color: blueviolet;
+             margin: 8px;
+
+         }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div class="item"><h4>1</h4></div>
+        <div class="item"><h4>2</h4></div>
+        <div class="item"><h4>3</h4></div>
+        <div class="item"><h4>4</h4></div>
+    </div>
+
+</body>
+
+</html>
