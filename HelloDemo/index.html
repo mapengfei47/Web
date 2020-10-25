@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="auther" content="马小飞" >
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    let boardArray = [
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 1, 2, 0, 0, 0],
+      [0, 0, 0, 2, 1, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0],
+    ]
+
+    let step = 0;
+    let container = document.getElementById('container')
+
+    function initBoards() {
+      for (let x = 0; x < 8; x++) {
+        for (let y = 0; y < 8; y++) {
+          let ele = document.createElement('div')
+          ele.style = "width:50px;height:50px;border:1px solid white;background-color:green;display:inline-block;vertical-align:bottom;cursor:pointer;"
+          ele.addEventListener('click',function(){
+            if(boardArray[x][y] == 0){
+              if(step % 2 == 0){
+                let whiteBox = document.createElement('div')
+                whiteBox.style = "width:40px;height:40px;border-radius:20px;background-color:white;margin:5px 0 0 5px;"
+                ele.appendChild(whiteBox)
+                boardArray[x][y] = 1
+              }else{
+                let blackBox = document.createElement('div')
+                blackBox.style = "width:40px;height:40px;border-radius:20px;background-color:black;margin:5px 0 0 5px;"
+                ele.appendChild(blackBox)
+                boardArray[x][y] = 2
+              }
+              step++;
+            }else{
+              return false;
+            }
+            console.log(boardArray)
+          })
+          container.appendChild(ele)
+
+          if (boardArray[x][y] == 1) {
+            let white = document.createElement('div')
+            white.style = "width:40px;height:40px;border-radius:20px;background-color:white;margin:5px 0 0 5px;"
+            ele.appendChild(white)
+          }
+
+          if (boardArray[x][y] == 2) {
+            let white = document.createElement('div')
+            white.style = "width:40px;height:40px;border-radius:20px;background-color:black;margin:5px 0 0 5px;"
+            ele.appendChild(white)
+          }
+        }
+        container.appendChild(document.createElement('br'))
+      }
+    }
+
+    initBoards()
+  </script>
+</body>
+
+</html>

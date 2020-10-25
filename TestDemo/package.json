@@ -1,0 +1,15 @@
+{
+  "name": "TestDemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Test-moment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "moment": "^2.29.1"
+  }
+}
